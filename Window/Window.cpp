@@ -50,6 +50,8 @@ bool Window::Initialize() {
     // Swap the back buffer with the fron buffer so we see the color
     glfwSwapBuffers(window);
 
+    glfwSetKeyCallback(window, KeyPressed);
+
     while (!glfwWindowShouldClose(window)) {
         // Take care of events (kind of event listener, example: key pressed, window resized)
         glfwPollEvents();
@@ -62,5 +64,15 @@ void Window::Destroy() {
     if (window != nullptr) {
         glfwDestroyWindow(window);
         window = nullptr;
+        glfwTerminate();
+    }
+}
+
+void Window::KeyPressed(GLFWwindow *window, int key, int scancode, int action, int mods) {
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+        glfwSetWindowShouldClose(window, GL_TRUE);
+    }
+    if (key == GLFW_KEY_E && action == GLFW_PRESS) {
+        printf("E key pressed\n");
     }
 }

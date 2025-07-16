@@ -7,5 +7,6 @@ int main() {
         std::cerr << "Failed to initialize window" << std::endl;
         return -1;
     }
+    Window.Destroy();
     return 0;
 }
