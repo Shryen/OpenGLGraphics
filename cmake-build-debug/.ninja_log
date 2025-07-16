@@ -1,8 +1,16 @@
 # ninja log v6
-5	301	7744076507558053	CMakeFiles/OpenGLGraphics.dir/main.cpp.obj	cb6f476911a2a9d2
-2	239	7744084312380454	build.ninja	9c695da86c4b89ad
-312	383	7744070546670143	OpenGLGraphics.exe	c89b4e16afe5b0c
-10	306	7744076507613188	CMakeFiles/OpenGLGraphics.dir/Window/Window.cpp.obj	53e763e8b4660e98
-4	132	7744086693299056	OpenGLGraphics.exe	1a45a028cfea2483
-4	307	7744087143054911	CMakeFiles/OpenGLGraphics.dir/main.cpp.obj	cb6f476911a2a9d2
+5	337	7744093053613272	CMakeFiles/OpenGLGraphics.dir/main.cpp.obj	cb6f476911a2a9d2
+2	239	7744095058373303	build.ninja	9c695da86c4b89ad
 307	416	7744087146084358	OpenGLGraphics.exe	1a45a028cfea2483
+1	10	7744092087681110	clean	cde670ad128f80d7
+19	322	7744094232581664	CMakeFiles/OpenGLGraphics.dir/Window/Window.cpp.obj	53e763e8b4660e98
+1	247	7744095058373303	build.ninja	9c695da86c4b89ad
+19	2778	7744095059160616	OpenGLGraphics.exe	250c7eeabf6d0f20
+4	304	7744095219543639	CMakeFiles/OpenGLGraphics.dir/Window/Window.cpp.obj	53e763e8b4660e98
+305	1290	7744095222550044	OpenGLGraphics.exe	250c7eeabf6d0f20
+4	308	7744095505281209	CMakeFiles/OpenGLGraphics.dir/Window/Window.cpp.obj	53e763e8b4660e98
+309	1334	7744095508320914	OpenGLGraphics.exe	250c7eeabf6d0f20
+4	302	7744095602682418	CMakeFiles/OpenGLGraphics.dir/Window/Window.cpp.obj	53e763e8b4660e98
+302	1363	7744095605649632	OpenGLGraphics.exe	250c7eeabf6d0f20
+4	299	7744095759113472	CMakeFiles/OpenGLGraphics.dir/Window/Window.cpp.obj	53e763e8b4660e98
+299	1287	7744095762064219	OpenGLGraphics.exe	250c7eeabf6d0f20

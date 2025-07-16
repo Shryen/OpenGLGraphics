@@ -1,7 +1,4 @@
 ﻿#include <iostream>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
 #include "Window/Window.h"
 
 int main() {

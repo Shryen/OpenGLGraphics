@@ -14,6 +14,12 @@ set(LIBRARIES_DIR "${CMAKE_SOURCE_DIR}/Libraries")
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
+# add_executable(${PROJECT_NAME}
+#     main.cpp
+#     "${CMAKE_SOURCE_DIR}/glad.c" # <--- Explicitly specify full path for glad.c
+#     Window/Window.cpp
+# )
+
 target_include_directories(${PROJECT_NAME} PUBLIC
         ${LIBRARIES_DIR}/include)
 
@@ -26,4 +32,5 @@ target_link_libraries(${PROJECT_NAME}
         shell32        # Windows Shell API functions
         # --- Move libglfw3.a to the end ---
         ${LIBRARIES_DIR}/lib/libglfw3.a
+        ${CMAKE_SOURCE_DIR}/glad.c
 )

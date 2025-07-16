@@ -71,9 +71,9 @@ build CMakeFiles/OpenGLGraphics.dir/Window/Window.cpp.obj: CXX_COMPILER__OpenGLG
 #############################################
 # Link the executable OpenGLGraphics.exe
 
-build OpenGLGraphics.exe: CXX_EXECUTABLE_LINKER__OpenGLGraphics_Debug CMakeFiles/OpenGLGraphics.dir/main.cpp.obj CMakeFiles/OpenGLGraphics.dir/Window/Window.cpp.obj | D$:/Programming/CPP/OpenGLGraphics/Libraries/lib/libglfw3.a
+build OpenGLGraphics.exe: CXX_EXECUTABLE_LINKER__OpenGLGraphics_Debug CMakeFiles/OpenGLGraphics.dir/main.cpp.obj CMakeFiles/OpenGLGraphics.dir/Window/Window.cpp.obj | D$:/Programming/CPP/OpenGLGraphics/Libraries/lib/libglfw3.a D$:/Programming/CPP/OpenGLGraphics/glad.c
   FLAGS = -g
-  LINK_LIBRARIES = -lgdi32  -lopengl32  -lwinmm  -lkernel32  -luser32  -lshell32  D:/Programming/CPP/OpenGLGraphics/Libraries/lib/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = -lgdi32  -lopengl32  -lwinmm  -lkernel32  -luser32  -lshell32  D:/Programming/CPP/OpenGLGraphics/Libraries/lib/libglfw3.a  D:/Programming/CPP/OpenGLGraphics/glad.c  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\OpenGLGraphics.dir
   POST_BUILD = cd .
   PRE_LINK = cd .

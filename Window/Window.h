@@ -1,7 +1,8 @@
 ﻿#ifndef WINDOW_H
 #define WINDOW_H
-#include "GLFW/glfw3.h"
+#pragma once
 
+struct  GLFWwindow;
 
 class Window {
 public:
@@ -14,6 +15,4 @@ private:
     GLFWwindow *window;
 };
 
-
-
-#endif //WINDOW_H
+#endif WINDOW_H

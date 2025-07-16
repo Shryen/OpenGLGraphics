@@ -35,13 +35,13 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 20,
+				"line" : 26,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 17,
+				"line" : 23,
 				"parent" : 0
 			}
 		]
@@ -124,6 +124,11 @@
 			{
 				"backtrace" : 2,
 				"fragment" : "D:\\Programming\\CPP\\OpenGLGraphics\\Libraries\\lib\\libglfw3.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\Programming\\CPP\\OpenGLGraphics\\glad.c",
 				"role" : "libraries"
 			},
 			{
