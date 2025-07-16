@@ -1,0 +1,8 @@
+# ninja log v6
+5	301	7744076507558053	CMakeFiles/OpenGLGraphics.dir/main.cpp.obj	cb6f476911a2a9d2
+2	239	7744084312380454	build.ninja	9c695da86c4b89ad
+312	383	7744070546670143	OpenGLGraphics.exe	c89b4e16afe5b0c
+10	306	7744076507613188	CMakeFiles/OpenGLGraphics.dir/Window/Window.cpp.obj	53e763e8b4660e98
+4	132	7744086693299056	OpenGLGraphics.exe	1a45a028cfea2483
+4	307	7744087143054911	CMakeFiles/OpenGLGraphics.dir/main.cpp.obj	cb6f476911a2a9d2
+307	416	7744087146084358	OpenGLGraphics.exe	1a45a028cfea2483
