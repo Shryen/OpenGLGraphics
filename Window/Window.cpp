@@ -30,6 +30,7 @@ bool Window::Initialize() {
 
     // Create a GLFW window with the given resolution and title
     window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "OpenGL Graphics", nullptr, nullptr);
+    glfwSetWindowUserPointer(window, this);
     if (window == nullptr) {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
@@ -52,6 +53,8 @@ bool Window::Initialize() {
 
     glfwSetKeyCallback(window, KeyPressed);
 
+    object.Initialize();
+
     while (!glfwWindowShouldClose(window)) {
         // Take care of events (kind of event listener, example: key pressed, window resized)
         glfwPollEvents();
@@ -69,10 +72,29 @@ void Window::Destroy() {
 }
 
 void Window::KeyPressed(GLFWwindow *window, int key, int scancode, int action, int mods) {
+    Window* Instance = static_cast<Window*>(glfwGetWindowUserPointer(window));
+    if (!Instance) {
+        printf("Error occured");
+        return;
+    }
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
         glfwSetWindowShouldClose(window, GL_TRUE);
     }
-    if (key == GLFW_KEY_E && action == GLFW_PRESS) {
-        printf("E key pressed\n");
+    if (key == GLFW_KEY_W && action == GLFW_PRESS) {
+        Instance->object.SetTowardsDirection(true);
+        Instance->object.MoveTowards();
+    }
+    if (key == GLFW_KEY_S && action == GLFW_PRESS) {
+        Instance->object.SetTowardsDirection(false);
+        Instance->object.MoveTowards();
+    }
+    if (key==GLFW_KEY_A && action == GLFW_PRESS) {
+        Instance->object.SetLeftDirection(false);
+        Instance->object.MoveLeft();
+    }
+    if (key == GLFW_KEY_D && action == GLFW_PRESS) {
+        Instance->object.SetLeftDirection(true);
+        Instance->object.MoveLeft();
     }
 }
+

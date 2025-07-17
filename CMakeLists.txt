@@ -8,6 +8,8 @@ set(SOURCE_FILES
         glad.c
         Window/Window.cpp
         Window/Window.h
+        Object/Object.cpp
+        Object/Object.h
 )
 
 set(LIBRARIES_DIR "${CMAKE_SOURCE_DIR}/Libraries")
