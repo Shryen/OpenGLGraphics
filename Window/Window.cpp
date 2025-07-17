@@ -47,7 +47,6 @@ bool Window::Initialize() {
 
     GLfloat vertices[] =
         {
-        // Equilateral triangle
         -0.5f, -0.5f * static_cast<float>(std::sqrt(3.0)) / 3.0f, 0.0f, // Bottom-left
          0.5f, -0.5f * static_cast<float>(std::sqrt(3.0)) / 3.0f, 0.0f, // Bottom-right
          0.0f,  0.5f * static_cast<float>(std::sqrt(3.0)) * 2.0f / 3.0f, 0.0f // Top-center
@@ -69,21 +68,30 @@ bool Window::Initialize() {
     // Specify the viewport of OpenGL from x=0, y=0 to maximum window width and height
     glViewport(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
 
+
+    // Create Vertex Shader Object and get reference
     GLuint VertexShader = glCreateShader(GL_VERTEX_SHADER);
+    // Attach Vertex Shader source to the Vertex Shader Object
     glShaderSource(VertexShader, 1, &vertexShaderSource, nullptr);
+    // Compile the shader into machine code
     glCompileShader(VertexShader);
 
+    // Create Fragment Shader Object and get reference
     GLuint FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+    // Attach Fragment Shader source to the shader object
     glShaderSource(FragmentShader, 1, &fragmentShaderSource, nullptr);
+    // Compile shader into machine code
     glCompileShader(FragmentShader);
 
+    //Create Shader program Object and get reference
     GLuint ShaderProgram = glCreateProgram();
-
+    // Attach shaders to the program
     glAttachShader(ShaderProgram, VertexShader);
     glAttachShader(ShaderProgram, FragmentShader);
-
+    // Wrap-up/link all shaders together into the program
     glLinkProgram(ShaderProgram);
 
+    // Delete the now useless Vertex and Fragment objects
     glDeleteShader(VertexShader);
     glDeleteShader(FragmentShader);
 
