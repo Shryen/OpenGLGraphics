@@ -3,25 +3,32 @@
 #include <cmath>
 #include <iostream>
 #include <ostream>
+#include "../Shader/Shader.h"
+#include "../Shader/ElementBuffer/ElementBuffer.h"
+#include "../Shader/VertexArray/VertexArray.h"
+#include "../Shader/VertexBuffer/VertexBuffer.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
 
-const char* vertexShaderSource = "#version 330 core\n"
-    "layout (location = 0) in vec3 aPos;\n"
-    "void main()\n"
-    "{\n"
-    "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-    "}\0";
+GLfloat vertices[] =
+    {
+    -0.5f, -0.5f * static_cast<float>(std::sqrt(3.0)) / 3.0f, 0.0f, // Bottom-left
+     0.5f, -0.5f * static_cast<float>(std::sqrt(3.0)) / 3.0f, 0.0f, // Bottom-right
+     0.0f,  0.5f * static_cast<float>(std::sqrt(3.0)) * 2.0f / 3.0f, 0.0f, // Top-center
+    -0.5f / 2, 0.5f * static_cast<float>(std::sqrt(3)) / 6, 0.f,
+    0.5f / 2, 0.5f * static_cast<float>(std::sqrt(3)) / 6, 0.f,
+    0.0f, -0.5f * static_cast<float>(std::sqrt(3)) / 3, 0.f,
+};
 
-const char* fragmentShaderSource = "#version 330 core\n"
-    "out vec4 FragColor;\n"
-    "void main()\n"
-    "{\n"
-    "   FragColor = vec4(0.8f, 0.3f, 0.02f, 1.0f);\n"
-    "}\n\0";
+GLuint indices[] =
+    {
+    0,3,5, // Lower left triangle
+    3,2,4, // Lower Right
+    5,4,1 // Upper
+    };
 
 
 Window::Window() {
@@ -45,13 +52,6 @@ bool Window::Initialize() {
     //Tell GLFW we are using the CORE profile so we only have the modern functions
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLfloat vertices[] =
-        {
-        -0.5f, -0.5f * static_cast<float>(std::sqrt(3.0)) / 3.0f, 0.0f, // Bottom-left
-         0.5f, -0.5f * static_cast<float>(std::sqrt(3.0)) / 3.0f, 0.0f, // Bottom-right
-         0.0f,  0.5f * static_cast<float>(std::sqrt(3.0)) * 2.0f / 3.0f, 0.0f // Top-center
-    };
-
     // Create a GLFW window with the given resolution and title
     window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "OpenGL Graphics", nullptr, nullptr);
     glfwSetWindowUserPointer(window, this);
@@ -68,48 +68,6 @@ bool Window::Initialize() {
     // Specify the viewport of OpenGL from x=0, y=0 to maximum window width and height
     glViewport(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
 
-
-    // Create Vertex Shader Object and get reference
-    GLuint VertexShader = glCreateShader(GL_VERTEX_SHADER);
-    // Attach Vertex Shader source to the Vertex Shader Object
-    glShaderSource(VertexShader, 1, &vertexShaderSource, nullptr);
-    // Compile the shader into machine code
-    glCompileShader(VertexShader);
-
-    // Create Fragment Shader Object and get reference
-    GLuint FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    // Attach Fragment Shader source to the shader object
-    glShaderSource(FragmentShader, 1, &fragmentShaderSource, nullptr);
-    // Compile shader into machine code
-    glCompileShader(FragmentShader);
-
-    //Create Shader program Object and get reference
-    GLuint ShaderProgram = glCreateProgram();
-    // Attach shaders to the program
-    glAttachShader(ShaderProgram, VertexShader);
-    glAttachShader(ShaderProgram, FragmentShader);
-    // Wrap-up/link all shaders together into the program
-    glLinkProgram(ShaderProgram);
-
-    // Delete the now useless Vertex and Fragment objects
-    glDeleteShader(VertexShader);
-    glDeleteShader(FragmentShader);
-
-    GLuint VAO, VBO;
-    // Generate VAO before VBO !!!IMPORTANT
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-
-    glBindVertexArray(VAO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
-
     // Specify the color of the background
     glClearColor(0.f, 0.f, 0.3f, 1.f);
     // Clean the back buffer and assign a new color to it
@@ -121,23 +79,34 @@ bool Window::Initialize() {
 
     object.Initialize();
 
+    Shader ShaderProgram("../Shader/default.vert", "../Shader/default.frag");
+    VertexArray VAO;
+    VAO.Bind();
+
+    VertexBuffer VBO(vertices, sizeof(vertices));
+    ElementBuffer EBO(indices, sizeof(indices));
+
+    VAO.LinkVBO(VBO, 0);
+    VAO.Unbind();
+    VBO.Unbind();
+    EBO.Unbind();
+
     while (!glfwWindowShouldClose(window)) {
         glClearColor(0.07f, 0.13, 0.17f, 1.f);
         glClear(GL_COLOR_BUFFER_BIT);
-        glUseProgram(ShaderProgram);
-        glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        ShaderProgram.Activate();
+        VAO.Bind();
+        glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
         glfwSwapBuffers(window);
 
         // Take care of events (kind of event listener, example: key pressed, window resized)
         glfwPollEvents();
     }
 
-    /*
-    glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
-    glDeleteProgram(ShaderProgram);
-    */
+    VAO.Delete();
+    VBO.Delete();
+    EBO.Delete();
+    ShaderProgram.Delete();
 
     return true;
 }
@@ -176,4 +145,3 @@ void Window::KeyPressed(GLFWwindow *window, int key, int scancode, int action, i
         Instance->object.MoveLeft();
     }
 }
-

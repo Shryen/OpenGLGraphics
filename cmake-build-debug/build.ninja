@@ -70,6 +70,34 @@ build CMakeFiles/OpenGLGraphics.dir/Object/Object.cpp.obj: CXX_COMPILER__OpenGLG
   OBJECT_DIR = CMakeFiles\OpenGLGraphics.dir
   OBJECT_FILE_DIR = CMakeFiles\OpenGLGraphics.dir\Object
 
+build CMakeFiles/OpenGLGraphics.dir/Shader/Shader.cpp.obj: CXX_COMPILER__OpenGLGraphics_unscanned_Debug D$:/Programming/CPP/OpenGLGraphics/Shader/Shader.cpp || cmake_object_order_depends_target_OpenGLGraphics
+  DEP_FILE = CMakeFiles\OpenGLGraphics.dir\Shader\Shader.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -ID:/Programming/CPP/OpenGLGraphics/Libraries/include
+  OBJECT_DIR = CMakeFiles\OpenGLGraphics.dir
+  OBJECT_FILE_DIR = CMakeFiles\OpenGLGraphics.dir\Shader
+
+build CMakeFiles/OpenGLGraphics.dir/Shader/VertexBuffer/VertexBuffer.cpp.obj: CXX_COMPILER__OpenGLGraphics_unscanned_Debug D$:/Programming/CPP/OpenGLGraphics/Shader/VertexBuffer/VertexBuffer.cpp || cmake_object_order_depends_target_OpenGLGraphics
+  DEP_FILE = CMakeFiles\OpenGLGraphics.dir\Shader\VertexBuffer\VertexBuffer.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -ID:/Programming/CPP/OpenGLGraphics/Libraries/include
+  OBJECT_DIR = CMakeFiles\OpenGLGraphics.dir
+  OBJECT_FILE_DIR = CMakeFiles\OpenGLGraphics.dir\Shader\VertexBuffer
+
+build CMakeFiles/OpenGLGraphics.dir/Shader/ElementBuffer/ElementBuffer.cpp.obj: CXX_COMPILER__OpenGLGraphics_unscanned_Debug D$:/Programming/CPP/OpenGLGraphics/Shader/ElementBuffer/ElementBuffer.cpp || cmake_object_order_depends_target_OpenGLGraphics
+  DEP_FILE = CMakeFiles\OpenGLGraphics.dir\Shader\ElementBuffer\ElementBuffer.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -ID:/Programming/CPP/OpenGLGraphics/Libraries/include
+  OBJECT_DIR = CMakeFiles\OpenGLGraphics.dir
+  OBJECT_FILE_DIR = CMakeFiles\OpenGLGraphics.dir\Shader\ElementBuffer
+
+build CMakeFiles/OpenGLGraphics.dir/Shader/VertexArray/VertexArray.cpp.obj: CXX_COMPILER__OpenGLGraphics_unscanned_Debug D$:/Programming/CPP/OpenGLGraphics/Shader/VertexArray/VertexArray.cpp || cmake_object_order_depends_target_OpenGLGraphics
+  DEP_FILE = CMakeFiles\OpenGLGraphics.dir\Shader\VertexArray\VertexArray.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -ID:/Programming/CPP/OpenGLGraphics/Libraries/include
+  OBJECT_DIR = CMakeFiles\OpenGLGraphics.dir
+  OBJECT_FILE_DIR = CMakeFiles\OpenGLGraphics.dir\Shader\VertexArray
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target OpenGLGraphics
@@ -78,7 +106,7 @@ build CMakeFiles/OpenGLGraphics.dir/Object/Object.cpp.obj: CXX_COMPILER__OpenGLG
 #############################################
 # Link the executable OpenGLGraphics.exe
 
-build OpenGLGraphics.exe: CXX_EXECUTABLE_LINKER__OpenGLGraphics_Debug CMakeFiles/OpenGLGraphics.dir/main.cpp.obj CMakeFiles/OpenGLGraphics.dir/Window/Window.cpp.obj CMakeFiles/OpenGLGraphics.dir/Object/Object.cpp.obj | D$:/Programming/CPP/OpenGLGraphics/Libraries/lib/libglfw3.a D$:/Programming/CPP/OpenGLGraphics/glad.c
+build OpenGLGraphics.exe: CXX_EXECUTABLE_LINKER__OpenGLGraphics_Debug CMakeFiles/OpenGLGraphics.dir/main.cpp.obj CMakeFiles/OpenGLGraphics.dir/Window/Window.cpp.obj CMakeFiles/OpenGLGraphics.dir/Object/Object.cpp.obj CMakeFiles/OpenGLGraphics.dir/Shader/Shader.cpp.obj CMakeFiles/OpenGLGraphics.dir/Shader/VertexBuffer/VertexBuffer.cpp.obj CMakeFiles/OpenGLGraphics.dir/Shader/ElementBuffer/ElementBuffer.cpp.obj CMakeFiles/OpenGLGraphics.dir/Shader/VertexArray/VertexArray.cpp.obj | D$:/Programming/CPP/OpenGLGraphics/Libraries/lib/libglfw3.a D$:/Programming/CPP/OpenGLGraphics/glad.c
   FLAGS = -g
   LINK_LIBRARIES = -lgdi32  -lopengl32  -lwinmm  -lkernel32  -luser32  -lshell32  D:/Programming/CPP/OpenGLGraphics/Libraries/lib/libglfw3.a  D:/Programming/CPP/OpenGLGraphics/glad.c  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\OpenGLGraphics.dir
