@@ -1,26 +1,25 @@
-﻿#ifndef WINDOW_H
+﻿#pragma once
+#ifndef WINDOW_H
 #define WINDOW_H
-#pragma once
 
-#include "../Object//Object.h"
-
-class Object;
-struct  GLFWwindow;
+struct GLFWwindow;
 
 class Window {
 public:
     Window();
     ~Window();
 
-    bool Initialize();
-    void Destroy();
+    void InitializeWindow();
+    GLFWwindow* GetWindow() const { return window; }
+
+    void ChangeColor(float Red, float Green, float Blue, GLFWwindow* Window);
 
 private:
-    GLFWwindow *window;
-    Object object;
+    GLFWwindow* window;
 
-    static void KeyPressed(GLFWwindow *window, int key, int scancode, int action, int mods);
+    void RunWindow(GLFWwindow* Window);
 };
+
 
 
 #endif //WINDOW_H

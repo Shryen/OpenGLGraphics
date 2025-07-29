@@ -8,16 +8,6 @@ set(SOURCE_FILES
         glad.c
         Window/Window.cpp
         Window/Window.h
-        Object/Object.cpp
-        Object/Object.h
-        Shader/Shader.cpp
-        Shader/Shader.h
-        Shader/VertexBuffer/VertexBuffer.cpp
-        Shader/VertexBuffer/VertexBuffer.h
-        Shader/ElementBuffer/ElementBuffer.cpp
-        Shader/ElementBuffer/ElementBuffer.h
-        Shader/VertexArray/VertexArray.cpp
-        Shader/VertexArray/VertexArray.h
 )
 
 set(LIBRARIES_DIR "${CMAKE_SOURCE_DIR}/Libraries")
